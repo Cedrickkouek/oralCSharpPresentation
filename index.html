@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Var vs Types Explicites - C#</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous" />
+
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/reveal.css" />
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/dist/theme/night.css" />
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js/plugin/highlight/monokai.css" />
+
+    <link rel="stylesheet" href="./styles/style.css" />
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+
+            <section>
+                <h1 class="text-primary">var vs Types Explicites</h1>
+                <h3 class="text-secondary">C# pour les BS: comprendre facilement</h3>
+                <p>Par Yann Cedrick</p>
+            </section>
+
+            <section>
+                <h2>Le problème</h2>
+
+                <pre><code class="language-csharp">
+int age = 20;
+var age2 = 20;
+          </code></pre>
+
+                <p>Pourquoi deux façons d'écrire la même chose ?</p>
+            </section>
+
+            <section>
+                <h2>Pourquoi écrire var x = 10 ?</h2>
+
+                <pre><code class="language-csharp">
+var x = 10;
+int y = 10;
+  </code></pre>
+
+                <p>
+                    Ici, écrire <strong>int</strong> n’apporte rien,
+                    puisque le <strong>10</strong> montre déjà que c’est un entier.
+                    <br />
+                    Donc <strong>var</strong> sert simplement à éviter la répétition.
+                </p>
+            </section>
+
+
+            <section>
+                <h2>Analogie du sac 🎒</h2>
+
+                <p>
+                    <strong>Type explicite :</strong> Sac avec étiquette "Livres"
+                </p>
+
+                <p>
+                    <strong>var :</strong> Sac sans étiquette mais on regarde dedans
+                </p>
+
+                <p>Même contenu, étiquette différente</p>
+            </section>
+
+            <section>
+                <h2>Analogie du jus 🥤</h2>
+
+                <p>Je veux un jus d'orange (String jusOrange)</p>
+                <p>VS</p>
+                <p>Je veux ce jus-là (Var jus )</p>
+            </section>
+
+            <section>
+                <h2>Exemple réel</h2>
+
+                <pre><code class="language-csharp">
+var name = "Alex";
+          </code></pre>
+
+                <p>Devient :</p>
+
+                <pre><code class="language-csharp">
+string name = "Alex";
+          </code></pre>
+            </section>
+
+            <section>
+                <h2>var n'est pas dynamique</h2>
+
+                <pre><code class="language-csharp">
+var x = 5;
+x = "Bonjour"; // Erreur
+          </code></pre>
+            </section>
+
+            <section>
+                <h2>Quand utiliser var</h2>
+
+                <ul>
+                    <li>Quand la valeur montre clairement le type</li>
+                    <li>Quand le type apparaît déjà à droite</li>
+                    <li>Quand écrire le type deux fois est inutile</li>
+                </ul>
+
+                <pre><code class="language-csharp">
+var name = "Alex";          // string évident
+var age = 25;              // int évident
+var list = new List<int>(); // List<int> évident
+  </code></pre>
+            </section>
+
+
+            <section>
+                <h2>Quand éviter var</h2>
+
+                <pre><code class="language-csharp">
+var userInfo = GetData();       // Flou
+string userName = GetData(); // Clair
+  </code></pre>
+            </section>
+
+            <section>
+                <h2>Résumé</h2>
+
+                <ul>
+                    <li>var garde un type</li>
+                    <li>Type connu à la compilation</li>
+                    <li>Choix de style</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Le mot-clé dynamic</h2>
+
+                <p>
+                    <strong>dynamic</strong> signifie que le type est décidé
+                    <strong>à l’exécution</strong>, pas à la compilation.
+                </p>
+
+                <pre><code class="language-csharp">
+dynamic x = 5;
+x = "Bonjour";
+x = true;
+  </code></pre>
+
+                <p>
+                    Ici, le type peut changer sans erreur de compilation.
+                </p>
+            </section>
+
+            <section>
+                <h2>Sources Microsoft</h2>
+
+                <p class="small">
+                    <a href="https://learn.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/var">Lien vers
+                        Documentation var</a>
+
+                </p>
+
+                <p class="small">
+                    <a
+                        href="https://learn.microsoft.com/en-us/dotnet/csharp/programming-guide/classes-and-structs/implicitly-typed-local-variables">Documentation
+                        types implicites</a>
+                </p>
+            </section>
+
+            <section>
+                <h2>Merci 🙌</h2>
+                <p>Questions ?</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/reveal.js/dist/reveal.js"></script>
+    <script src="https://unpkg.com/reveal.js/plugin/highlight/highlight.js"></script>
+
+    <script src="./script/script.js"></script>
+</body>
+
+</html>
